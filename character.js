@@ -10,7 +10,7 @@ class Character {
 
     moveUp(){
        this.y-=1
-       //this.updateBonce()
+       this.updateBonce()
     }
     moveRight(){
         console.log('lol')
@@ -19,7 +19,7 @@ class Character {
     }
     moveDown(){
         this.y+=1
-        //this.updateBonce()
+        this.updateBonce()
     }
     moveLeft(){
         this.x-=1
@@ -28,49 +28,52 @@ class Character {
 
     updateBonce(){
         this.player.style.left = this.x + 'vw'
+        this.player.style.up = this.y + 'vh'
     }
 
     charAnime(){
+        console.log('running', this.running)
         let animPosition = 0
         //var myVar = setInterval()
-        if(!this.running){
+        if(!this.interval){
             this.interval = setInterval(() => {
-            switch(animPosition){
-                case 0:
-                    //mudar imagem do boneco
-                    console.log('looool')
-                    this.player.src = "./characters/adventurer-run-00.png"
-                    animPosition=1
-                    break;
-                case 1:
-                    this.player.src = "./characters/adventurer-run-01.png"
-                    animPosition=2
-                    break;
-                case 2:
-                    this.player.src = "./characters/adventurer-run-02.png"
-                    animPosition=3
-                    break;
-                case 3:
-                    this.player.src = "./characters/adventurer-run-03.png"
-                    animPosition=4
-                    break;
-                case 4:
-                    this.player.src = "./characters/adventurer-run-04.png"
-                    animPosition=5
-                    break;
-                case 5:
-                    this.player.src = "./characters/adventurer-run-05.png"
-                    animPosition=0
-                    break;
-            }
+                switch(animPosition){
+                    case 0:
+                        this.player.src = "./characters/adventurer-run-00.png"
+                        animPosition=1
+                        break;
+                    case 1:
+                        this.player.src = "./characters/adventurer-run-01.png"
+                        animPosition=2
+                        break;
+                    case 2:
+                        this.player.src = "./characters/adventurer-run-02.png"
+                        animPosition=3
+                        break;
+                    case 3:
+                        this.player.src = "./characters/adventurer-run-03.png"
+                        animPosition=4
+                        break;
+                    case 4:
+                        this.player.src = "./characters/adventurer-run-04.png"
+                        animPosition=5
+                        break;
+                    case 5:
+                        this.player.src = "./characters/adventurer-run-05.png"
+                        animPosition=0
+                        break;
+                }
+            }, 300);
+        } else if(!this.running){
+            clearInterval(this.interval);
+            this.interval = undefined
+        }
+    }
+    
+    charJump(){
+        this.player.style.bottom = "2vh";
+        setTimeout(() => {
+            this.player.style.bottom = "0vh";
         }, 500);
-        this.running = true
-        }// else {
-         //  clearInterval(this.interval)
-        //}
-    }    
+    }
 }
-
-//function myStopFunction(){
-//    clearInterval(myVar);
-//}

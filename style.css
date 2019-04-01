@@ -7,5 +7,10 @@ body{
     height: 150px;
     position: absolute;
     bottom: 0;
+    transition: bottom 0.5s;
+}
+
+.jump {
+    bottom: 2vh;
 }
 

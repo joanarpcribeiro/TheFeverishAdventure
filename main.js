@@ -10,17 +10,16 @@ document.onkeydown = function doKeyDown(e) {
       case 37: 
         player.moveLeft()
         player.charAnime()
-        //if (e.keyCode == currentKey){
-        //    currentKey = false;
-        //    clearInterval(Character.);
-        //}
+        player.running = true;
         break
       case 38: 
         player.moveUp()  
+        player.charJump()
         break
       case 39: 
         player.moveRight()
         player.charAnime()
+        player.running = true;
         break
       case 40:
         player.moveDown()
@@ -32,16 +31,18 @@ document.onkeydown = function doKeyDown(e) {
     e.preventDefault() 
     switch(e.keyCode) {
       case 37: 
-        player.clearInterval()
+        player.running = false;
+        player.charAnime()
         break
       case 38: 
-        player.moveUp()  
+        //player.moveUp()  
         break
       case 39: 
-      player.clearInterval()
+        player.running = false;
+        player.charAnime()
         break
       case 40:
-        player.moveDown()
+        //player.moveDown()
         break
     }
   }
