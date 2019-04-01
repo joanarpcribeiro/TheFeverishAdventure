@@ -76,4 +76,8 @@ class Character {
             this.player.style.bottom = "0vh";
         }, 500);
     }
+
+    charTurn(){
+        
+    }
 }
