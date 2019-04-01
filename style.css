@@ -1,0 +1,11 @@
+body{
+    background-image: url("./images/Background.png");
+
+}
+
+.main-character{
+    height: 150px;
+    position: absolute;
+    bottom: 0;
+}
+
