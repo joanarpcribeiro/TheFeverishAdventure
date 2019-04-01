@@ -10,6 +10,7 @@ document.onkeydown = function doKeyDown(e) {
       case 37: 
         player.moveLeft()
         player.charAnime()
+        player.charTurn()
         player.running = true;
         break
       case 38: 

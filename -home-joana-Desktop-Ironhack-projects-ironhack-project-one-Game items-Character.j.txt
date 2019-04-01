@@ -1,0 +1,4 @@
+/home/joana/Desktop/Ironhack/projects-ironhack/project-one/Game items/Character.js
+/home/joana/Desktop/Ironhack/projects-ironhack/project-one/Game items/Game idea
+/home/joana/Desktop/Ironhack/projects-ironhack/project-one/Game items/Game idea.doc
+/home/joana/Desktop/Ironhack/projects-ironhack/project-one/Game items/index.html

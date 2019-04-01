@@ -76,8 +76,12 @@ class Character {
             this.player.style.bottom = "0vh";
         }, 500);
     }
-
+    
     charTurn(){
-        
+        this.player.classList.add("turnLeft")
+        setTimeout(() => {
+            this.player.classList.remove("turnLeft")
+        }, 500);
+
     }
 }
