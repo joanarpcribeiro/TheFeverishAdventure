@@ -36,7 +36,7 @@ class Character {
 
     charAnime(){
         if (this.stopped) {
-            this.player.src = "./characters/adventurer-idle-00.png"
+            this.player.src = "./images/characters/adventurer-idle-00.png"
             if(this.interval) {
                 clearInterval(this.interval);
                 this.interval = undefined
@@ -49,33 +49,33 @@ class Character {
             this.interval = setInterval(() => {
                 switch(animPosition){
                     case 0:
-                        this.player.src = "./characters/adventurer-run-00.png"
+                        this.player.src = "./images/characters/adventurer-run-00.png"
                         animPosition=1
                         break;
                     case 1:
-                        this.player.src = "./characters/adventurer-run-01.png"
+                        this.player.src = "./images/characters/adventurer-run-01.png"
                         animPosition=2
                         break;
                     case 2:
-                        this.player.src = "./characters/adventurer-run-02.png"
+                        this.player.src = "./images/characters/adventurer-run-02.png"
                         animPosition=3
                         break;
                     case 3:
-                        this.player.src = "./characters/adventurer-run-03.png"
+                        this.player.src = "./images/characters/adventurer-run-03.png"
                         animPosition=4
                         break;
                     case 4:
-                        this.player.src = "./characters/adventurer-run-04.png"
+                        this.player.src = "./images/characters/adventurer-run-04.png"
                         animPosition=5
                         break;
                     case 5:
-                        this.player.src = "./characters/adventurer-run-05.png"
+                        this.player.src = "./images/characters/adventurer-run-05.png"
                         animPosition=0
                         break;
                 }
             }, 300);
         } else if(!this.running){
-            this.player.src = "./characters/adventurer-idle-00.png"
+            this.player.src = "./images/characters/adventurer-idle-00.png"
             clearInterval(this.interval);
             this.interval = undefined
         }
