@@ -66,12 +66,9 @@ setInterval(() => {
 
 
     forward.onclick = function(){
-        console.log("clicked")
-        console.log(this.stopped)
-        this.stopped = false
-        console.log(this.stopped)
+        player.stopped = false
     } 
 
-    
+
  
 

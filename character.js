@@ -7,6 +7,7 @@ class Character {
         this.running = false
         this.interval = undefined
         this.stopped = false
+        this.firstDialog = false
     }
 
     moveUp(){
@@ -92,9 +93,10 @@ class Character {
         }, 700);
     }
     createQuestion(){
-        if(this.player.style.left[0] >= 5 && this.player.style.left[1] >= 5){
+        if(this.player.style.left[0] >= 5 && this.player.style.left[1] >= 5 && !this.firstDialog){
             openDialogue()
             this.stopped = true
+            this.firstDialog = true
         }
     }
     trackCharacterPosition(){
