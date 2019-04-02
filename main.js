@@ -1,9 +1,15 @@
 var background = document.querySelector('body')
 var player = new Character(0,0) // (0,0) = Initial position
 var dialogues = document.getElementById("dialogues")
+var optionOne = document.getElementById("optionOne")
+
 
 function closeDialogue() {
-    this.dialogues.style.display = "none";
+    dialogues.style.display = "none";
+}
+
+function openDialogue(){
+    optionOne.style.display = "block";
 }
 
 document.onkeydown = function doKeyDown(e) {
@@ -49,5 +55,9 @@ document.onkeydown = function doKeyDown(e) {
         break
     }
   }
+
+setInterval(() => {
+    player.createQuestion()
+}, 100);
  
 

@@ -60,3 +60,6 @@ button{
     transform: scaleX(-1);
 }
 
+#optionOne {
+    display: none;
+}

@@ -6,24 +6,32 @@ class Character {
         this.player = document.getElementsByClassName("main-character")[0]
         this.running = false
         this.interval = undefined
+        this.stopped = false
     }
 
     moveUp(){
-       this.y-=1
-       this.updateBonce()
+        if(!this.stopped){
+            this.y-=1
+            this.updateBonce()
+        }
     }
     moveRight(){
-        console.log('lol')
+        if(!this.stopped){
         this.x+=1
         this.updateBonce()
+        }
     }
     moveDown(){
+        if(!this.stopped){
         this.y+=1
         this.updateBonce()
+        }
     }
     moveLeft(){
+        if(!this.stopped){
         this.x-=1
         this.updateBonce()
+    }
     }
 
     updateBonce(){
@@ -84,8 +92,13 @@ class Character {
         }, 700);
     }
     createQuestion(){
-        if(this.player){
-            
+        if(this.player.style.left[0] >= 5 && this.player.style.left[1] >= 5){
+            openDialogue()
+            this.stopped = true
         }
     }
+    trackCharacterPosition(){
+        console.log(this.player.style.left)
+    }
+
 }
