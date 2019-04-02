@@ -1,8 +1,10 @@
 var background = document.querySelector('body')
-
-
 var player = new Character(0,0) // (0,0) = Initial position
+var dialogues = document.getElementById("dialogues")
 
+function closeDialogue() {
+    this.dialogues.style.display = "none";
+}
 
 document.onkeydown = function doKeyDown(e) {
     e.preventDefault() 
@@ -48,3 +50,4 @@ document.onkeydown = function doKeyDown(e) {
     }
   }
  
+

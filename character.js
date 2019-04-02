@@ -71,7 +71,7 @@ class Character {
     }
     
     charJump(){
-        this.player.style.bottom = "2vh";
+        this.player.style.bottom = "7vh";
         setTimeout(() => {
             this.player.style.bottom = "0vh";
         }, 500);
@@ -81,7 +81,11 @@ class Character {
         this.player.classList.add("turnLeft")
         setTimeout(() => {
             this.player.classList.remove("turnLeft")
-        }, 500);
-
+        }, 700);
+    }
+    createQuestion(){
+        if(this.player){
+            
+        }
     }
 }
