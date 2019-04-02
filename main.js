@@ -1,40 +1,46 @@
 var background = document.querySelector('body')
 var player = new Character(0,0) // (0,0) = Initial position
+var oldMan = new OldMan(0,0) // (0,0) = Initial position
+var beast
 var dialogues = document.getElementById("dialogues")
 var optionOne = document.getElementById("optionOne")
 var forward = document.getElementById("forward")
 var backwards = document.getElementById("backwards")
+var body = document.getElementsByTagName('body')[0]
 
+var currentScreen = 1
+
+player.player.style.left = "4vw"
 
 function closeDialogue() {
     dialogues.style.display = "none";
+    player.stopped = false
 }
 
 function openDialogue(){
     optionOne.style.display = "block";
+    oldMan.turn("left")
 }
 
 
 document.onkeydown = function doKeyDown(e) {
     e.preventDefault() 
     switch(e.keyCode) {
-      case 37: 
+      case 37:  // Left
         player.moveLeft()
         player.charAnime()
-        player.charTurn()
+        player.turn("left")
         player.running = true;
         break
       case 38: 
         player.moveUp()  
         player.charJump()
         break
-      case 39: 
+      case 39:   // Right
         player.moveRight()
         player.charAnime()
+        player.turn("right")
         player.running = true;
-        break
-      case 40:
-        player.moveDown()
         break
     }
   }
@@ -53,14 +59,15 @@ document.onkeydown = function doKeyDown(e) {
         player.running = false;
         player.charAnime()
         break
-      case 40:
-        //player.moveDown()
-        break
     }
   }
 
 setInterval(() => {
     player.createQuestion()
+    if(player.player.style.left.split('vw')[0] <= 0) {
+        body.classList.remove("main")
+        body.classList.add("image-left")
+    }
 }, 100);
 
 
@@ -75,5 +82,21 @@ backwards.onclick= function(){
 }
 
 
+// TODO: trigger goToScreen when the user goes on left or right
+// delta is +1 or -1
+//function goToScreen(delta) {
+//    currentScreen += delta
+//    if (delta === 1) {
+//        // TODO: move the player to the left
+//
+//    }
+//    else if (delta === -1) {
+//        // TODO: move the player to the right
+//    }
+//    // TODO: change the background image
+//}
+
+
  
 
+// TODO: when the user chooses "back", beast = new Beast()

@@ -6,7 +6,7 @@ class Character {
         this.player = document.getElementsByClassName("main-character")[0]
         this.running = false
         this.interval = undefined
-        this.stopped = false
+        this.stopped = true
         this.firstDialog = false
     }
 
@@ -19,12 +19,6 @@ class Character {
     moveRight(){
         if(!this.stopped){
         this.x+=1
-        this.updateBonce()
-        }
-    }
-    moveDown(){
-        if(!this.stopped){
-        this.y+=1
         this.updateBonce()
         }
     }
@@ -41,9 +35,16 @@ class Character {
     }
 
     charAnime(){
+        if (this.stopped) {
+            this.player.src = "./characters/adventurer-idle-00.png"
+            if(this.interval) {
+                clearInterval(this.interval);
+                this.interval = undefined
+            }
+            return
+        }
         console.log('running', this.running)
         let animPosition = 0
-        //var myVar = setInterval()
         if(!this.interval){
             this.interval = setInterval(() => {
                 switch(animPosition){
@@ -74,6 +75,7 @@ class Character {
                 }
             }, 300);
         } else if(!this.running){
+            this.player.src = "./characters/adventurer-idle-00.png"
             clearInterval(this.interval);
             this.interval = undefined
         }
@@ -86,11 +88,11 @@ class Character {
         }, 500);
     }
     
-    charTurn(){
-        this.player.classList.add("turnLeft")
-        setTimeout(() => {
+    turn(direction){
+        if (direction === "left")
+            this.player.classList.add("turnLeft")
+        else 
             this.player.classList.remove("turnLeft")
-        }, 700);
     }
     createQuestion(){
         if(this.player.style.left[0] >= 8 && this.player.style.left[1] >= 0 && !this.firstDialog){

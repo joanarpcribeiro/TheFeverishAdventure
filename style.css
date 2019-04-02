@@ -1,6 +1,25 @@
-body{
-    background-image: url("./images/Background.png");
+body {
+    transition: backgroun-image 2s
+}
 
+.main{
+    background-image: url("./images/Background.png");
+}
+
+.image-left{
+    background: url("./images/a72a9f367363d83ca70227d13f18c174.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.image-right{
+    background: url("./images/backgroundRight.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 /*Dialogue box and title*/
@@ -22,19 +41,25 @@ p{
 
 .dialogues-box{
     border: 1px solid black; 
-    height: 150px;
+    height: 200px;
     position: absolute;
     top: 30%;
     right: 25%;
     left: 25%;
     background-color: black;
     opacity: 0.6;
-
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-button{
-    text-align: center;
+/*#dialogues button{
+  align-content: center;
+}*/
 
+#optionOne button {
+    align-content: center;
 }
 
 .main-character{
@@ -42,6 +67,7 @@ button{
     position: absolute;
     bottom: 0;
     transition: bottom 0.5s;
+
 }
 
 .jump {
@@ -54,4 +80,11 @@ button{
 
 #optionOne {
     display: none;
+}
+
+#old-man{
+    height: 150px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
