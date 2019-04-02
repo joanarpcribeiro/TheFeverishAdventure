@@ -93,7 +93,7 @@ class Character {
         }, 700);
     }
     createQuestion(){
-        if(this.player.style.left[0] >= 5 && this.player.style.left[1] >= 5 && !this.firstDialog){
+        if(this.player.style.left[0] >= 8 && this.player.style.left[1] >= 0 && !this.firstDialog){
             openDialogue()
             this.stopped = true
             this.firstDialog = true

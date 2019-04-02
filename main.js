@@ -64,10 +64,15 @@ setInterval(() => {
 }, 100);
 
 
+forward.onclick = function(){
+    player.stopped = false
+    optionOne.style.display = "none";
+}
 
-    forward.onclick = function(){
-        player.stopped = false
-    } 
+backwards.onclick= function(){
+    player.stopped = false
+    optionOne.style.display = "none";
+}
 
 
  
