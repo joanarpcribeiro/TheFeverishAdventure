@@ -2,6 +2,8 @@ var background = document.querySelector('body')
 var player = new Character(0,0) // (0,0) = Initial position
 var dialogues = document.getElementById("dialogues")
 var optionOne = document.getElementById("optionOne")
+var forward = document.getElementById("forward")
+var backwards = document.getElementById("backwards")
 
 
 function closeDialogue() {
@@ -11,6 +13,7 @@ function closeDialogue() {
 function openDialogue(){
     optionOne.style.display = "block";
 }
+
 
 document.onkeydown = function doKeyDown(e) {
     e.preventDefault() 
@@ -59,5 +62,16 @@ document.onkeydown = function doKeyDown(e) {
 setInterval(() => {
     player.createQuestion()
 }, 100);
+
+
+
+    forward.onclick = function(){
+        console.log("clicked")
+        console.log(this.stopped)
+        this.stopped = false
+        console.log(this.stopped)
+    } 
+
+    
  
 

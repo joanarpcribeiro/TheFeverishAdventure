@@ -19,16 +19,6 @@ p{
     color: white;
 }
 
-/*#dialogues{
-    border: 1px solid black; 
-    height: 150px;
-    position: absolute;
-    top: 30%;
-    right: 25%;
-    left: 25%;
-    background-color: black;
-    opacity: 0.6;
-}*/
 
 .dialogues-box{
     border: 1px solid black; 
@@ -39,10 +29,12 @@ p{
     left: 25%;
     background-color: black;
     opacity: 0.6;
+
 }
 
 button{
     text-align: center;
+
 }
 
 .main-character{
