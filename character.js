@@ -31,7 +31,7 @@ class Character {
 
     updateBonce(){
         this.player.style.left = this.x + 'vw'
-        this.player.style.up = this.y + 'vh'
+        this.player.style.bottom = this.y + 'vh'
     }
 
     charAnime(){

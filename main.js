@@ -6,8 +6,12 @@ var optionOne = document.getElementById("optionOne")
 var forward = document.getElementById("forward")
 var backwards = document.getElementById("backwards")
 var body = document.getElementsByTagName('body')[0]
-var treasureChest = document.getElementById("treasure")
 var currentScene = 0
+var treasureChest = document.getElementById("treasure")
+var hellBeast = document.getElementById("beast")
+
+//Beast Hidden on main screen
+hellBeast.style.visibility= "hidden";
 
 //Treasure hidden on main screen
 treasureChest.style.visibility = "hidden";
@@ -73,15 +77,22 @@ setInterval(() => {
         oldMan.oldMan.style.display = "none";
         player.player.classList.add("main-character-left")
         treasureChest.style.visibility = "visible";
-        currentScene=0
-        
+        player.x = 88
+        hellBeast.style.visibility= "hidden";
+        currentScene=-1
     }
-    else if (player.player.style.left[0] >= 8 && player.player.style.left[1] >= 6){
+    else if (player.player.style.left.split('vw')[0] >= 8 && player.player.style.left.split('vw')[1] >= 8){
         body.classList.remove("main");
         body.classList.add("image-right");
         oldMan.oldMan.style.display = "none";
         player.player.classList.add("main-character-right")
-        currentScene=0
+        treasureChest.style.visibility = "hidden";
+        hellBeast.style.visibility= "visible";
+        currentScene=1
+    }
+
+    if(currentScene === -1 &&  player.x <= 10){
+        
     }
 }, 100);
 
