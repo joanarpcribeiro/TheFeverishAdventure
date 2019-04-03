@@ -3,14 +3,16 @@ var player = new Character(0,0) // (0,0) = Initial position
 var oldMan = new OldMan(0,0) // (0,0) = Initial position
 var dialogues = document.getElementById("dialogues")
 var optionOne = document.getElementById("optionOne")
+var wrongWay = document.getElementById("almostDead")
 var forward = document.getElementById("forward")
 var backwards = document.getElementById("backwards")
 var body = document.getElementsByTagName('body')[0]
-var currentScene = 0
 var treasureChest = document.getElementById("treasure")
 var hellBeast = document.getElementById("beast")
+var currentScene = 0
 var moveLeft = false
 var hasSword = false
+var goFight = false
 
 //Beast Hidden on main screen
 hellBeast.style.visibility= "hidden";
@@ -20,6 +22,9 @@ treasureChest.style.visibility = "hidden";
 
 //Player located on the left on main screen
 player.player.style.left = "4vw"
+
+//Wrong way dialogue closed on main screen
+wrongWay.style.visibility="hidden";
 
 function closeDialogue() {
     dialogues.style.display = "none";
@@ -54,11 +59,9 @@ document.onkeydown = function doKeyDown(e) {
         player.running = true;
         break
       case 80://Fight animation
-      console.log("lol")
         if(hasSword){
          player.charFight()
-
-        }
+        } 
     }
   }
 
@@ -93,7 +96,7 @@ setInterval(() => {
     }
     else if (player.player.style.left.split('vw')[0] >= 8 
     && player.player.style.left.split('vw')[1] >= 8 
-    && currentScene === 0){
+    && currentScene === 0 || goFight){
         body.classList.remove("main");
         body.classList.add("image-right");
         oldMan.oldMan.style.display = "none";
@@ -101,6 +104,9 @@ setInterval(() => {
         hellBeast.style.visibility= "visible";
         hasSword = false
         currentScene=1
+        player.updateBonce()
+        player.player.src="./images/characters/adventurer-idle-00.png";
+        wrongWay.style.visibility="visible";
     }
 
     if(currentScene === -1 &&  player.x <= 8){
@@ -127,10 +133,15 @@ setInterval(() => {
 
     if(currentScene === 1 && player.x >= 0 && hasSword){
         player.player.src="./images/characters/adventurer-idle-2-00.png";
+    } 
+    
+    if(currentScene === 1 && player.x >= 30 && hasSword){
+        hellBeast.src="./images/villain/Hell-Beast-Files/GIF/with-stroke/hell-beast-burn.gif"
     }
-   
-    
-    
+
+    if(currentScene === 1 && player.x >= 30 && !hasSword){ //NOT WORKING!!
+        player.charDie()
+    }
 
 }, 100);
 
@@ -138,28 +149,11 @@ setInterval(() => {
 forward.onclick = function(){
     player.stopped = false
     optionOne.style.display = "none";
+    goFight=true
+    player.x=0
 }
 
 backwards.onclick= function(){
     player.stopped = false
     optionOne.style.display = "none";
 }
-
-
-// TODO: trigger goToScreen when the user goes on left or right
-// delta is +1 or -1
-//function goToScreen(delta) {
-//    currentScene += delta
-//    if (delta === 1) {
-//        // TODO: move the player to the left
-//    }
-//    else if (delta === -1) {
-//        // TODO: move the player to the right
-//    }
-//    // TODO: change the background image
-//}
-
-
- 
-
-// TODO: when the user chooses "back", beast = new Beast()

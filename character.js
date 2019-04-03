@@ -9,6 +9,8 @@ class Character {
         this.stopped = true
         this.firstDialog = false
         this.fightPosition=0
+        this.diePosition=0
+        this.lastDialog = false
     }
 
     moveRight(){
@@ -96,6 +98,7 @@ class Character {
             this.stopped = true
             this.firstDialog = true
             moveLeft = true
+
         }
     }
     trackCharacterPosition(){
@@ -103,7 +106,6 @@ class Character {
     }
 
     charFight(){
-        console.log("lol")
         
         setTimeout(() => {
             this.player.src = "./images/characters/adventurer-attack1-00.png"
@@ -112,26 +114,37 @@ class Character {
         setTimeout(() => {
             this.player.src = "./images/characters/adventurer-attack1-01.png"
             this.fightPosition=2
-        }, 300);      
+        }, 400);      
         setTimeout(() => {
             this.player.src = "./images/characters/adventurer-attack1-02.png"
             this.fightPosition=3
-        }, 400);
+        }, 600);
         setTimeout(() => {
             this.player.src = "./images/characters/adventurer-attack1-03.png"
             this.fightPosition=4
-        }, 500);
+        }, 800);
         setTimeout(() => {
             this.player.src = "./images/characters/adventurer-attack1-04.png"
             this.fightPosition=5
-        }, 600);
+        }, 1000);
         setTimeout(() => {
             this.player.src = "./images/characters/adventurer-attack2-03.png"
-            this.fightPosition=0
-        }, 700);
+            this.fightPosition=6
+        }, 1200);
         setTimeout(() => {
             this.player.src = "./images/characters/adventurer-attack1-00.png"
             this.fightPosition=0
-        }, 800);                
+        }, 1400);                
+     }
+
+     charDie(){
+        setTimeout(() => {
+            this.player.src = "./images/characters/adventurer-die-05.png"
+            this.diePosition=1
+        }, 100);
+        setTimeout(() => {
+            this.player.src = "./images/characters/adventurer-die-06.png"
+            this.diePosition=2
+        }, 200);                
      }
 }
