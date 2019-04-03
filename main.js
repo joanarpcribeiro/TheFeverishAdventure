@@ -58,7 +58,7 @@ document.onkeydown = function doKeyDown(e) {
         player.turn("right")
         player.running = true;
         break
-      case 80://Fight animation
+      case 32://Fight animation
         if(hasSword){
          player.charFight()
         } 
@@ -112,7 +112,12 @@ setInterval(() => {
     if(currentScene === -1 &&  player.x <= 8){
         player.player.src="./images/characters/adventurer-idle-2-00.png";
         hasSword = true
+        currentScene=-1
     } 
+
+    if (currentScene === -1 && player.x <= 85 && hasSword){
+        player.player.src="./images/characters/adventurer-idle-2-00.png";
+    }
     
     if(currentScene === -1 && player.x >= 80 && hasSword){
         body.classList.remove("image-left");
@@ -122,9 +127,14 @@ setInterval(() => {
         player.x = 0
     }
 
+    if (currentScene ===0 && player.x <=85 && hasSword){
+        player.player.src="./images/characters/adventurer-idle-2-00.png";
+    }
+
     if(currentScene === 0 && player.x >= 80 && hasSword){
         body.classList.remove("main");
         body.classList.add("image-right");
+        player.player.src="./images/characters/adventurer-idle-2-00.png";
         currentScene=1
         treasureChest.style.visibility = "hidden";
         hellBeast.style.visibility= "visible";
@@ -139,7 +149,7 @@ setInterval(() => {
         hellBeast.src="./images/villain/Hell-Beast-Files/GIF/with-stroke/hell-beast-burn.gif"
     }
 
-    if(currentScene === 1 && player.x >= 30 && !hasSword){ //NOT WORKING!!
+    if(currentScene === 1 && player.x >= 25 && !hasSword){ //NOT WORKING!!
         player.charDie()
     }
 
