@@ -9,6 +9,8 @@ var body = document.getElementsByTagName('body')[0]
 var currentScene = 0
 var treasureChest = document.getElementById("treasure")
 var hellBeast = document.getElementById("beast")
+var moveLeft = false
+var hasSword = false
 
 //Beast Hidden on main screen
 hellBeast.style.visibility= "hidden";
@@ -32,15 +34,17 @@ function openDialogue(){
 
 document.onkeydown = function doKeyDown(e) {
     e.preventDefault() 
+    console.log(e.keyCode)
     switch(e.keyCode) {
       case 37:  // Left
-        player.moveLeft()
-        player.charAnime()
-        player.turn("left")
-        player.running = true;
+        if (!player.x <= 0 && moveLeft){
+            player.moveLeft()
+            player.charAnime()
+            player.turn("left")
+            player.running = true;
+        }
         break
       case 38: 
-        player.moveUp()  
         player.charJump()
         break
       case 39:   // Right
@@ -49,6 +53,12 @@ document.onkeydown = function doKeyDown(e) {
         player.turn("right")
         player.running = true;
         break
+      case 80://Fight animation
+      console.log("lol")
+        if(hasSword){
+         player.charFight()
+
+        }
     }
   }
 
@@ -60,7 +70,7 @@ document.onkeydown = function doKeyDown(e) {
         player.charAnime()
         break
       case 38: 
-        //player.moveUp()  
+        player.charJump()
         break
       case 39: 
         player.running = false;
@@ -71,29 +81,57 @@ document.onkeydown = function doKeyDown(e) {
 
 setInterval(() => {
     player.createQuestion()
-    if(player.player.style.left.split('vw')[0] <= 0) {
+    if(player.player.style.left.split('vw')[0] <= 0 && currentScene === 0) {
         body.classList.remove("main");
         body.classList.add("image-left");
         oldMan.oldMan.style.display = "none";
-        player.player.classList.add("main-character-left")
         treasureChest.style.visibility = "visible";
         player.x = 88
         hellBeast.style.visibility= "hidden";
+        hasSword = false
         currentScene=-1
     }
-    else if (player.player.style.left.split('vw')[0] >= 8 && player.player.style.left.split('vw')[1] >= 8){
+    else if (player.player.style.left.split('vw')[0] >= 8 
+    && player.player.style.left.split('vw')[1] >= 8 
+    && currentScene === 0){
         body.classList.remove("main");
         body.classList.add("image-right");
         oldMan.oldMan.style.display = "none";
-        player.player.classList.add("main-character-right")
         treasureChest.style.visibility = "hidden";
         hellBeast.style.visibility= "visible";
+        hasSword = false
         currentScene=1
     }
 
-    if(currentScene === -1 &&  player.x <= 10){
-        
+    if(currentScene === -1 &&  player.x <= 8){
+        player.player.src="./images/characters/adventurer-idle-2-00.png";
+        hasSword = true
+    } 
+    
+    if(currentScene === -1 && player.x >= 80 && hasSword){
+        body.classList.remove("image-left");
+        body.classList.add("main");
+        currentScene=0
+        treasureChest.style.visibility = "hidden";
+        player.x = 0
     }
+
+    if(currentScene === 0 && player.x >= 80 && hasSword){
+        body.classList.remove("main");
+        body.classList.add("image-right");
+        currentScene=1
+        treasureChest.style.visibility = "hidden";
+        hellBeast.style.visibility= "visible";
+        player.x=0
+    }
+
+    if(currentScene === 1 && player.x >= 0 && hasSword){
+        player.player.src="./images/characters/adventurer-idle-2-00.png";
+    }
+   
+    
+    
+
 }, 100);
 
 

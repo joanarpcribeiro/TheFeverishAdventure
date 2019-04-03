@@ -8,14 +8,9 @@ class Character {
         this.interval = undefined
         this.stopped = true
         this.firstDialog = false
+        this.fightPosition=0
     }
 
-    moveUp(){
-        if(!this.stopped){
-            this.y-=1
-            this.updateBonce()
-        }
-    }
     moveRight(){
         if(!this.stopped){
         this.x+=1
@@ -32,6 +27,7 @@ class Character {
     updateBonce(){
         this.player.style.left = this.x + 'vw'
         this.player.style.bottom = this.y + 'vh'
+        
     }
 
     charAnime(){
@@ -99,10 +95,43 @@ class Character {
             openDialogue()
             this.stopped = true
             this.firstDialog = true
+            moveLeft = true
         }
     }
     trackCharacterPosition(){
         console.log(this.player.style.left)
     }
 
+    charFight(){
+        console.log("lol")
+        
+        setTimeout(() => {
+            this.player.src = "./images/characters/adventurer-attack1-00.png"
+            this.fightPosition=1
+        }, 200);
+        setTimeout(() => {
+            this.player.src = "./images/characters/adventurer-attack1-01.png"
+            this.fightPosition=2
+        }, 300);      
+        setTimeout(() => {
+            this.player.src = "./images/characters/adventurer-attack1-02.png"
+            this.fightPosition=3
+        }, 400);
+        setTimeout(() => {
+            this.player.src = "./images/characters/adventurer-attack1-03.png"
+            this.fightPosition=4
+        }, 500);
+        setTimeout(() => {
+            this.player.src = "./images/characters/adventurer-attack1-04.png"
+            this.fightPosition=5
+        }, 600);
+        setTimeout(() => {
+            this.player.src = "./images/characters/adventurer-attack2-03.png"
+            this.fightPosition=0
+        }, 700);
+        setTimeout(() => {
+            this.player.src = "./images/characters/adventurer-attack1-00.png"
+            this.fightPosition=0
+        }, 800);                
+     }
 }
