@@ -65,9 +65,8 @@ p{
 .main-character{
     height: 150px;
     position: absolute;
-    bottom: 0;
+    bottom: 0vh;
     transition: bottom 0.5s;
-
 }
 
 .jump {
@@ -85,6 +84,29 @@ p{
 #old-man{
     height: 150px;
     position: absolute;
-    bottom: 0;
+    bottom: 0vh;
     right: 0;
+}
+
+.main-character-left{
+    height: 150px;
+    position: absolute;
+    bottom: 0vh;
+    transition: bottom 0.5s;
+    right: 0;
+}
+
+.main-character-right{
+    height: 150px;
+    position: absolute;
+    bottom: 0vh;
+    transition: bottom 0.5s;
+    left: 0;
+}
+
+#treasure{
+    width: 10%;
+    position: absolute;
+    bottom:0vh;
+    margin-left: 20px;
 }

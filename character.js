@@ -82,7 +82,7 @@ class Character {
     }
     
     charJump(){
-        this.player.style.bottom = "7vh";
+        this.player.style.bottom = "8vh";
         setTimeout(() => {
             this.player.style.bottom = "0vh";
         }, 500);
