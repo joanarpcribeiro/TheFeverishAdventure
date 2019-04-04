@@ -24,7 +24,6 @@ var closeRetry = document.getElementById("winClose")
 var instructions = document.getElementById("swordInstructions")
 var startInstructions = document.getElementById("after-title")
 var instructionsSword = false
-var end = false
 
 
 //Player located on the left on main screen
@@ -152,17 +151,13 @@ setInterval(() => {
         swordChest.style.visibility="hidden";
         instructions.style.visibility="visible"
         instructionsSword = true
-        setTimeout(() => {
-            instructionsSword=false
-            instructions.style.visibility="hidden"
-        }, 4000);
         currentScene=-1
-    } 
+        }
 
-    //if(currentScene === -1 &&  player.x <= 8 && hasSword){
-    //    instructionsSword=false
-    //    instructions.style.visibility="hidden"
-    //}
+    if(currentScene === -1 &&  player.x > 8 || player.x < 6 && hasSword){
+        instructionsSword = false
+        instructions.style.visibility="hidden"
+    }
 
     if (currentScene === -1 && player.x <= 85 && hasSword){
         player.player.src="./images/characters/adventurer-idle-2-00.png";
@@ -200,12 +195,7 @@ setInterval(() => {
     }
 
     if (currentScene===1 && player.x >=20 && !hasSword){
-        end = true
         wrongWay.style.visibility="visible";
-        setTimeout(() => {
-            wrongWay.style.visibility="hidden";
-            end = false
-        }, 3000);
         
     }
 
@@ -214,6 +204,7 @@ setInterval(() => {
         dead = true
         player.charDie()
         lost.style.visibility="visible";
+        wrongWay.style.visibility="hidden";
     }
 
 }, 100);
