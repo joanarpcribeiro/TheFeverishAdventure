@@ -24,6 +24,10 @@ var closeRetry = document.getElementById("winClose")
 var instructions = document.getElementById("swordInstructions")
 var startInstructions = document.getElementById("after-title")
 var instructionsSword = false
+let blastSound = document.getElementById("bgm")
+let warSound = document.getElementById("bgmWar")
+let lostTheGame = document.getElementById("endGame")
+let wonTheGame = document.getElementById("winGame")
 
 
 //Player located on the left on main screen
@@ -62,7 +66,7 @@ function closeDialogue() {
     setTimeout(() => {
         startInstructions.style.visibility="hidden"
     }, 4000);
-    
+    blastSound.play()
 }
 
 function openDialogue(){
@@ -130,6 +134,8 @@ setInterval(() => {
             swordChest.style.visibility="hidden"
         }, 3000);
         hasSword = false
+        blastSound.pause()
+        warSound.play()
         currentScene=-1
     }
     else if (player.player.style.left.split('vw')[0] >= 8 
@@ -141,6 +147,7 @@ setInterval(() => {
         hellBeast.style.visibility= "visible";
         hasSword = false
         currentScene=1
+        warSound.play()
         player.updateBonce()
         player.player.src="./images/characters/adventurer-idle-00.png";
     }
@@ -151,6 +158,7 @@ setInterval(() => {
         swordChest.style.visibility="hidden";
         instructions.style.visibility="visible"
         instructionsSword = true
+        warSound.play()
         currentScene=-1
         }
 
@@ -192,6 +200,8 @@ setInterval(() => {
     if(currentScene === 1 && player.x >= 39 && hasSword){
         hellBeast.src="./images/villain/Hell-Beast-Files/GIF/with-stroke/hell-beast-burn.gif"
         winner.style.visibility="visible"
+        warSound.pause()
+        wonTheGame.play()
     }
 
     if (currentScene===1 && player.x >=20 && !hasSword){
@@ -202,15 +212,18 @@ setInterval(() => {
     if(currentScene === 1 && player.x >= 39 && !hasSword){
         player.stopped = true
         dead = true
+        wrongWay.style.visibility="hidden";
         player.charDie()
         lost.style.visibility="visible";
-        wrongWay.style.visibility="hidden";
+        warSound.pause()
+        lostTheGame.play()
     }
 
 }, 100);
 
 
 forward.onclick = function(){
+    blastSound.pause()
     player.stopped = false
     optionOne.style.display = "none";
     goFight=true
