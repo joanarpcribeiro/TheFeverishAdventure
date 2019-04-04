@@ -106,35 +106,34 @@ class Character {
     }
 
     charFight(){
-        
         setTimeout(() => {
             this.player.src = "./images/characters/adventurer-attack1-00.png"
             this.fightPosition=1
-        }, 200);
+        }, 100);
         setTimeout(() => {
             this.player.src = "./images/characters/adventurer-attack1-01.png"
             this.fightPosition=2
-        }, 400);      
+        }, 200);      
         setTimeout(() => {
             this.player.src = "./images/characters/adventurer-attack1-02.png"
             this.fightPosition=3
-        }, 600);
+        }, 300);
         setTimeout(() => {
             this.player.src = "./images/characters/adventurer-attack1-03.png"
             this.fightPosition=4
-        }, 800);
+        }, 400);
         setTimeout(() => {
             this.player.src = "./images/characters/adventurer-attack1-04.png"
             this.fightPosition=5
-        }, 1000);
+        }, 500);
         setTimeout(() => {
             this.player.src = "./images/characters/adventurer-attack2-03.png"
             this.fightPosition=6
-        }, 1200);
+        }, 600);
         setTimeout(() => {
             this.player.src = "./images/characters/adventurer-attack1-00.png"
             this.fightPosition=0
-        }, 1400);                
+        }, 700);                
      }
 
      charDie(){

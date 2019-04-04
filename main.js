@@ -6,6 +6,8 @@ var optionOne = document.getElementById("optionOne")
 var wrongWay = document.getElementById("almostDead")
 var forward = document.getElementById("forward")
 var backwards = document.getElementById("backwards")
+var retry = document.getElementById("tryAgain")
+var quit = document.getElementById("close")
 var body = document.getElementsByTagName('body')[0]
 var treasureChest = document.getElementById("treasure")
 var hellBeast = document.getElementById("beast")
@@ -15,6 +17,10 @@ var hasSword = false
 var goFight = false
 var swordChest = document.getElementById("sword")
 var lost = document.getElementById("gameOver")
+var dead = false
+var winner = document.getElementById("win")
+
+
 
 //Beast Hidden on main screen
 hellBeast.style.visibility= "hidden";
@@ -33,6 +39,9 @@ swordChest.style.visibility="hidden";
 
 //game over hidden on main screen
 lost.style.visibility="hidden";
+
+//Winner hidden on main screen
+winner.style.visibility="hidden"
 
 
 function closeDialogue() {
@@ -100,6 +109,7 @@ setInterval(() => {
         treasureChest.style.visibility = "visible";
         player.x = 88
         hellBeast.style.visibility= "hidden";
+        swordChest.style.visibility="visible";
         hasSword = false
         currentScene=-1
     }
@@ -120,6 +130,7 @@ setInterval(() => {
     if(currentScene === -1 &&  player.x <= 8){
         player.player.src="./images/characters/adventurer-idle-2-00.png";
         hasSword = true
+        swordChest.style.visibility="hidden";
         currentScene=-1
     } 
 
@@ -155,6 +166,7 @@ setInterval(() => {
     
     if(currentScene === 1 && player.x >= 30 && hasSword){
         hellBeast.src="./images/villain/Hell-Beast-Files/GIF/with-stroke/hell-beast-burn.gif"
+        winner.style.visibility="visible"
     }
 
     if (currentScene===1 && player.x >=10 && !hasSword){
@@ -163,7 +175,9 @@ setInterval(() => {
 
     if(currentScene === 1 && player.x >= 30 && !hasSword){
         player.stopped = true
+        dead = true
         player.charDie()
+        wrongWay.style.visibility="hidden";
         lost.style.visibility="visible";
     }
 
@@ -180,4 +194,12 @@ forward.onclick = function(){
 backwards.onclick= function(){
     player.stopped = false
     optionOne.style.display = "none";
+}
+
+retry.onclick= function (){
+    document.location.reload()
+}
+
+quit.onclick= function (){
+    document.location.reload()
 }
