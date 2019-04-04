@@ -13,6 +13,8 @@ var currentScene = 0
 var moveLeft = false
 var hasSword = false
 var goFight = false
+var swordChest = document.getElementById("sword")
+var lost = document.getElementById("gameOver")
 
 //Beast Hidden on main screen
 hellBeast.style.visibility= "hidden";
@@ -25,6 +27,13 @@ player.player.style.left = "4vw"
 
 //Wrong way dialogue closed on main screen
 wrongWay.style.visibility="hidden";
+
+//SwordChest dialogue hidden on main screen
+swordChest.style.visibility="hidden";
+
+//game over hidden on main screen
+lost.style.visibility="hidden";
+
 
 function closeDialogue() {
     dialogues.style.display = "none";
@@ -106,7 +115,6 @@ setInterval(() => {
         currentScene=1
         player.updateBonce()
         player.player.src="./images/characters/adventurer-idle-00.png";
-        wrongWay.style.visibility="visible";
     }
 
     if(currentScene === -1 &&  player.x <= 8){
@@ -149,8 +157,14 @@ setInterval(() => {
         hellBeast.src="./images/villain/Hell-Beast-Files/GIF/with-stroke/hell-beast-burn.gif"
     }
 
-    if(currentScene === 1 && player.x >= 25 && !hasSword){ //NOT WORKING!!
+    if (currentScene===1 && player.x >=10 && !hasSword){
+        wrongWay.style.visibility="visible";
+    }
+
+    if(currentScene === 1 && player.x >= 30 && !hasSword){
+        player.stopped = true
         player.charDie()
+        lost.style.visibility="visible";
     }
 
 }, 100);

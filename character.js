@@ -147,4 +147,5 @@ class Character {
             this.diePosition=2
         }, 200);                
      }
+
 }
