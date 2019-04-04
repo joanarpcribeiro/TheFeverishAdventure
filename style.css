@@ -49,9 +49,22 @@ body {
     text-shadow: 0px 2px 3px white;
 }
 
+.instructions{
+    color: white;
+    text-shadow: 0px 2px 3px grey;
+
+}
+
 .dialogue{
     font-family: 'Kaushan Script', cursive;
     font-size: 30px;
+    text-align: center;
+    color: white;
+}
+
+.smallCaps{
+    font-family: 'Kaushan Script', cursive;
+    font-size: 20px;
     text-align: center;
     color: white;
 }
@@ -159,6 +172,7 @@ button{
     width: 80%;
     position: absolute;
     bottom: 0;
+    margin-left: 5vw;
 }
 
 .main-character-sword{
@@ -173,5 +187,13 @@ button{
 }
 
 #close{
+    z-index: 1;
+}
+
+#winTryAgain{
+    z-index: 1;
+}
+
+#winClose{
     z-index: 1;
 }

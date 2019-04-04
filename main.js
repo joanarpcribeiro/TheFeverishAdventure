@@ -19,34 +19,51 @@ var swordChest = document.getElementById("sword")
 var lost = document.getElementById("gameOver")
 var dead = false
 var winner = document.getElementById("win")
+var winRetry = document.getElementById("winTryAgain")
+var closeRetry = document.getElementById("winClose")
+var instructions = document.getElementById("swordInstructions")
+var startInstructions = document.getElementById("after-title")
+var instructionsSword = false
+var end = false
 
-
-
-//Beast Hidden on main screen
-hellBeast.style.visibility= "hidden";
-
-//Treasure hidden on main screen
-treasureChest.style.visibility = "hidden";
 
 //Player located on the left on main screen
 player.player.style.left = "4vw"
 
-//Wrong way dialogue closed on main screen
+//Hidden elements on main screen
+//Beast
+hellBeast.style.visibility= "hidden";
+
+//Treasure
+treasureChest.style.visibility = "hidden";
+
+//Wrong way dialogue
 wrongWay.style.visibility="hidden";
 
-//SwordChest dialogue hidden on main screen
+//SwordChest dialogue
 swordChest.style.visibility="hidden";
 
-//game over hidden on main screen
+//game over
 lost.style.visibility="hidden";
 
-//Winner hidden on main screen
+//Winner dialogue
 winner.style.visibility="hidden"
+
+//Instructions for the sword
+instructions.style.visibility="hidden"
+
+//Instructions at the beginning
+startInstructions.style.visibility="hidden"
 
 
 function closeDialogue() {
     dialogues.style.display = "none";
     player.stopped = false
+    startInstructions.style.visibility="visible"
+    setTimeout(() => {
+        startInstructions.style.visibility="hidden"
+    }, 4000);
+    
 }
 
 function openDialogue(){
@@ -110,6 +127,9 @@ setInterval(() => {
         player.x = 88
         hellBeast.style.visibility= "hidden";
         swordChest.style.visibility="visible";
+        setTimeout(() => {
+            swordChest.style.visibility="hidden"
+        }, 3000);
         hasSword = false
         currentScene=-1
     }
@@ -119,7 +139,6 @@ setInterval(() => {
         body.classList.remove("main");
         body.classList.add("image-right");
         oldMan.oldMan.style.display = "none";
-        treasureChest.style.visibility = "hidden";
         hellBeast.style.visibility= "visible";
         hasSword = false
         currentScene=1
@@ -131,8 +150,19 @@ setInterval(() => {
         player.player.src="./images/characters/adventurer-idle-2-00.png";
         hasSword = true
         swordChest.style.visibility="hidden";
+        instructions.style.visibility="visible"
+        instructionsSword = true
+        setTimeout(() => {
+            instructionsSword=false
+            instructions.style.visibility="hidden"
+        }, 4000);
         currentScene=-1
     } 
+
+    //if(currentScene === -1 &&  player.x <= 8 && hasSword){
+    //    instructionsSword=false
+    //    instructions.style.visibility="hidden"
+    //}
 
     if (currentScene === -1 && player.x <= 85 && hasSword){
         player.player.src="./images/characters/adventurer-idle-2-00.png";
@@ -164,20 +194,25 @@ setInterval(() => {
         player.player.src="./images/characters/adventurer-idle-2-00.png";
     } 
     
-    if(currentScene === 1 && player.x >= 30 && hasSword){
+    if(currentScene === 1 && player.x >= 39 && hasSword){
         hellBeast.src="./images/villain/Hell-Beast-Files/GIF/with-stroke/hell-beast-burn.gif"
         winner.style.visibility="visible"
     }
 
-    if (currentScene===1 && player.x >=10 && !hasSword){
+    if (currentScene===1 && player.x >=20 && !hasSword){
+        end = true
         wrongWay.style.visibility="visible";
+        setTimeout(() => {
+            wrongWay.style.visibility="hidden";
+            end = false
+        }, 3000);
+        
     }
 
-    if(currentScene === 1 && player.x >= 30 && !hasSword){
+    if(currentScene === 1 && player.x >= 39 && !hasSword){
         player.stopped = true
         dead = true
         player.charDie()
-        wrongWay.style.visibility="hidden";
         lost.style.visibility="visible";
     }
 
@@ -201,5 +236,13 @@ retry.onclick= function (){
 }
 
 quit.onclick= function (){
+    document.location.reload()
+}
+
+winRetry.onclick=function(){
+    document.location.reload()
+}
+
+closeRetry.onclick=function(){
     document.location.reload()
 }
