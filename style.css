@@ -5,7 +5,6 @@ body {
 .main{
     height: 100%;
     width: 100%;
-    /*background-image: url("./images/Background.png");*/
     background: url("./images/Background.png") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -16,9 +15,6 @@ body {
 .image-left{
     height: 100%;
     width: 100%;
-    /*background-image: url("./images/a72a9f367363d83ca70227d13f18c174.png");
-    background-repeat: no-repeat;
-    background-size: cover;*/
     background: url("./images/a72a9f367363d83ca70227d13f18c174.png") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -29,9 +25,6 @@ body {
 .image-right{
     height: 100%;
     width: 100%;
-    /*background-image: url("./images/backgroundRight.png");
-    background-repeat: no-repeat;
-    background-size: cover;*/
     background: url("./images/backgroundRight.png") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;

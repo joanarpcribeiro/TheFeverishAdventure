@@ -200,6 +200,9 @@ setInterval(() => {
     if(currentScene === 1 && player.x >= 39 && hasSword){
         hellBeast.src="./images/villain/Hell-Beast-Files/GIF/with-stroke/hell-beast-burn.gif"
         winner.style.visibility="visible"
+        setTimeout(() => {
+            hellBeast.style.visibility="hidden"
+        }, 3000);
         warSound.pause()
         wonTheGame.play()
     }
