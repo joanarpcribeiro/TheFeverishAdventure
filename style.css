@@ -3,11 +3,22 @@ body {
 }
 
 .main{
-    background-image: url("./images/Background.png");
-    repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    /*background-image: url("./images/Background.png");*/
+    background: url("./images/Background.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .image-left{
+    height: 100%;
+    width: 100%;
+    /*background-image: url("./images/a72a9f367363d83ca70227d13f18c174.png");
+    background-repeat: no-repeat;
+    background-size: cover;*/
     background: url("./images/a72a9f367363d83ca70227d13f18c174.png") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -16,6 +27,11 @@ body {
 }
 
 .image-right{
+    height: 100%;
+    width: 100%;
+    /*background-image: url("./images/backgroundRight.png");
+    background-repeat: no-repeat;
+    background-size: cover;*/
     background: url("./images/backgroundRight.png") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -77,13 +93,17 @@ body {
 }
 
 .dialogues-gameOver{
-    height: 200px;
+    height: 260px;
     position: absolute;
     top: 25%;
     right: 25%;
     left: 25%;
     opacity: 1;
     background-color: black;
+}
+
+.dialogues-youWin{
+    height: 400px;
 }
 
 button{
@@ -102,14 +122,10 @@ button{
     flex-direction: row;
 }
 
-.buttons-game-over{
-    justify-content: space-between;
-
-}
 .main-character{
     height: 150px;
     position: absolute;
-    bottom: 0vh;
+    bottom: 0;
     transition: bottom 0.5s;
 }
 
@@ -128,27 +144,27 @@ button{
 #old-man{
     height: 150px;
     position: absolute;
-    bottom: 0vh;
+    bottom: 0;
     right: 0;
 }
 
 #treasure{
     width: 10%;
     position: absolute;
-    bottom:0vh;
+    bottom:0;
     margin-left: 20px;
 }
 
 #beast{
     width: 80%;
     position: absolute;
-    bottom: -1;
+    bottom: 0;
 }
 
 .main-character-sword{
     height: 150px;
     position: absolute;
-    bottom: 0vh;
+    bottom: 0;
     transition: bottom 0.5s;
 }
 
