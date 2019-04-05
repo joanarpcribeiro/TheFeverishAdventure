@@ -191,6 +191,10 @@ setInterval(() => {
         player.x = 0
     }
 
+    if (currentScene ===0 && player.x <=85 && !hasSword){
+        player.charAnime()
+    }
+
     if (currentScene ===0 && player.x <=85 && hasSword){
         player.player.src="./images/characters/adventurer-idle-2-00.png";
     }
