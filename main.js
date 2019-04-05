@@ -11,13 +11,8 @@ var quit = document.getElementById("close")
 var body = document.getElementsByTagName('body')[0]
 var treasureChest = document.getElementById("treasure")
 var hellBeast = document.getElementById("beast")
-var currentScene = 0
-var moveLeft = false
-var hasSword = false
-var goFight = false
 var swordChest = document.getElementById("sword")
 var lost = document.getElementById("gameOver")
-var dead = false
 var winner = document.getElementById("win")
 var winRetry = document.getElementById("winTryAgain")
 var closeRetry = document.getElementById("winClose")
@@ -30,6 +25,13 @@ var lostTheGame = document.getElementById("endGame")
 var wonTheGame = document.getElementById("winGame")
 var killTheMonster = document.getElementById("kill-monster")
 var commentScreenZero = document.getElementById("letsKillIt")
+var jumpUpSound =document.getElementById("jump")
+var swordDraw = document.getElementById("swordUse")
+var currentScene = 0
+var moveLeft = false
+var hasSword = false
+var goFight = false
+var dead = false
 
 
 //Player located on the left on main screen
@@ -66,7 +68,6 @@ killTheMonster.style.visibility="hidden"
 //Way back to kill the monster
 commentScreenZero.style.visibility="hidden"
 
-
 function closeDialogue() {
     dialogues.style.display = "none";
     player.stopped = false
@@ -96,6 +97,7 @@ document.onkeydown = function doKeyDown(e) {
         break
       case 38: 
         player.charJump()
+        jumpUpSound.play()
         break
       case 39:   // Right
         player.moveRight()
@@ -106,6 +108,7 @@ document.onkeydown = function doKeyDown(e) {
       case 32://Fight animation
         if(hasSword){
          player.charFight()
+         swordDraw.play()
         } 
     }
   }
@@ -119,10 +122,12 @@ document.onkeydown = function doKeyDown(e) {
         break
       case 38: 
         player.charJump()
+        jumpUpSound.load()
         break
       case 39: 
         player.running = false;
         player.charAnime()
+        swordDraw.load()
         break
     }
   }
