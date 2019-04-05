@@ -111,6 +111,15 @@ document.onkeydown = function doKeyDown(e) {
          player.charFight()
          swordDraw.play()
         } 
+        if(currentScene === 1 && player.x >= 38 && hasSword){
+            hellBeast.src="./images/villain/Hell-Beast-Files/GIF/with-stroke/hell-beast-burn.gif"
+            winner.style.visibility="visible"
+            setTimeout(() => {
+                hellBeast.style.visibility="hidden"
+            }, 3000);
+            warSound.pause()
+            wonTheGame.play()
+        }
     }
   }
 
@@ -229,16 +238,6 @@ setInterval(() => {
 
     if (currentScene === 1 && player.x > 20 && player.x <= 80 && hasSword){
         killTheMonster.style.visibility="hidden"
-    }
-    
-    if(currentScene === 1 && player.x >= 38 && hasSword){
-        hellBeast.src="./images/villain/Hell-Beast-Files/GIF/with-stroke/hell-beast-burn.gif"
-        winner.style.visibility="visible"
-        setTimeout(() => {
-            hellBeast.style.visibility="hidden"
-        }, 3000);
-        warSound.pause()
-        wonTheGame.play()
     }
 
     if (currentScene===1 && player.x >=20 && !hasSword){
