@@ -24,10 +24,10 @@ var closeRetry = document.getElementById("winClose")
 var instructions = document.getElementById("swordInstructions")
 var startInstructions = document.getElementById("after-title")
 var instructionsSword = false
-let blastSound = document.getElementById("bgm")
-let warSound = document.getElementById("bgmWar")
-let lostTheGame = document.getElementById("endGame")
-let wonTheGame = document.getElementById("winGame")
+var blastSound = document.getElementById("bgm")
+var warSound = document.getElementById("bgmWar")
+var lostTheGame = document.getElementById("endGame")
+var wonTheGame = document.getElementById("winGame")
 
 
 //Player located on the left on main screen
@@ -162,10 +162,10 @@ setInterval(() => {
         currentScene=-1
         }
 
-    if(currentScene === -1 &&  player.x > 8 || player.x < 6 && hasSword){
-        instructionsSword = false
+    if(currentScene === -1 &&  player.x > 8){
         instructions.style.visibility="hidden"
     }
+    
 
     if (currentScene === -1 && player.x <= 85 && hasSword){
         player.player.src="./images/characters/adventurer-idle-2-00.png";
