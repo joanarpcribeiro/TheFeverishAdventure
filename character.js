@@ -41,7 +41,6 @@ class Character {
             }
             return
         }
-        console.log('running', this.running)
         let animPosition = 0
         if(!this.interval){
             this.interval = setInterval(() => {

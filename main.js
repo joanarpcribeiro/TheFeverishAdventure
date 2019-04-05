@@ -85,7 +85,6 @@ function openDialogue(){
 
 document.onkeydown = function doKeyDown(e) {
     e.preventDefault() 
-    console.log(e.keyCode)
     switch(e.keyCode) {
       case 37:  // Left
         if (!player.x <= 0 && moveLeft){
