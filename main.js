@@ -189,7 +189,14 @@ setInterval(() => {
 
     if (currentScene ===0 && player.x <=85 && hasSword){
         player.player.src="./images/characters/adventurer-idle-2-00.png";
+    }
+
+    if (currentScene ===0 && player.x >=0 && player.x < 30 && hasSword){
         commentScreenZero.style.visibility="visible"
+    }
+
+    if(currentScene ===0 && player.x >=30 && hasSword){
+        commentScreenZero.style.visibility="hidden"
     }
 
     if(currentScene === 0 && player.x >= 80 && hasSword){
@@ -197,7 +204,7 @@ setInterval(() => {
         body.classList.add("image-right");
         player.player.src="./images/characters/adventurer-idle-2-00.png";
         currentScene=1
-        commentScreenZero.style.visibility="hidden"
+       // commentScreenZero.style.visibility="hidden"
         treasureChest.style.visibility = "hidden";
         hellBeast.style.visibility= "visible";
         player.x=0
