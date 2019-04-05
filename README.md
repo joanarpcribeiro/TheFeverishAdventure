@@ -5,6 +5,4 @@ when the games of the "Choose your own Adventure" style were just blooming, and 
 
 I loved those games, so I wanted to create something of that sort.
 
-The background images are not mine, will update with credits once I have them sorted.
-
 This was done as a first final project for Ironhack, Lisbon campus.
