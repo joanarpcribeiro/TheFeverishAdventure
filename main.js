@@ -204,7 +204,6 @@ setInterval(() => {
         body.classList.add("image-right");
         player.player.src="./images/characters/adventurer-idle-2-00.png";
         currentScene=1
-       // commentScreenZero.style.visibility="hidden"
         treasureChest.style.visibility = "hidden";
         hellBeast.style.visibility= "visible";
         player.x=0
@@ -223,7 +222,7 @@ setInterval(() => {
         killTheMonster.style.visibility="hidden"
     }
     
-    if(currentScene === 1 && player.x >= 39 && hasSword){
+    if(currentScene === 1 && player.x >= 38 && hasSword){
         hellBeast.src="./images/villain/Hell-Beast-Files/GIF/with-stroke/hell-beast-burn.gif"
         winner.style.visibility="visible"
         setTimeout(() => {
