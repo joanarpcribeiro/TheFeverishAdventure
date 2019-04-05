@@ -102,6 +102,7 @@ class Character {
     }
     trackCharacterPosition(){
         console.log(this.player.style.left)
+        console.log("Condition", player.player.style.left.split('vw')[0])
     }
 
     charFight(){
