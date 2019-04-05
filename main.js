@@ -28,6 +28,8 @@ var blastSound = document.getElementById("bgm")
 var warSound = document.getElementById("bgmWar")
 var lostTheGame = document.getElementById("endGame")
 var wonTheGame = document.getElementById("winGame")
+var killTheMonster = document.getElementById("kill-monster")
+var commentScreenZero = document.getElementById("letsKillIt")
 
 
 //Player located on the left on main screen
@@ -57,6 +59,12 @@ instructions.style.visibility="hidden"
 
 //Instructions at the beginning
 startInstructions.style.visibility="hidden"
+
+//Kill the monster Message
+killTheMonster.style.visibility="hidden"
+
+//Way back to kill the monster
+commentScreenZero.style.visibility="hidden"
 
 
 function closeDialogue() {
@@ -181,6 +189,7 @@ setInterval(() => {
 
     if (currentScene ===0 && player.x <=85 && hasSword){
         player.player.src="./images/characters/adventurer-idle-2-00.png";
+        commentScreenZero.style.visibility="visible"
     }
 
     if(currentScene === 0 && player.x >= 80 && hasSword){
@@ -188,6 +197,7 @@ setInterval(() => {
         body.classList.add("image-right");
         player.player.src="./images/characters/adventurer-idle-2-00.png";
         currentScene=1
+        commentScreenZero.style.visibility="hidden"
         treasureChest.style.visibility = "hidden";
         hellBeast.style.visibility= "visible";
         player.x=0
@@ -195,7 +205,16 @@ setInterval(() => {
 
     if(currentScene === 1 && player.x >= 0 && hasSword){
         player.player.src="./images/characters/adventurer-idle-2-00.png";
+        
     } 
+
+    if (currentScene === 1 && player.x >= 0 && player.x <= 20 && hasSword){
+        killTheMonster.style.visibility="visible"
+    }
+
+    if (currentScene === 1 && player.x > 20 && player.x <= 80 && hasSword){
+        killTheMonster.style.visibility="hidden"
+    }
     
     if(currentScene === 1 && player.x >= 39 && hasSword){
         hellBeast.src="./images/villain/Hell-Beast-Files/GIF/with-stroke/hell-beast-burn.gif"
